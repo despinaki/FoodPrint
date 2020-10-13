@@ -1,14 +1,13 @@
 # FoodPrint
 
-MVP
+##MVP
 
-  User auth
+User auth
+Carbon footprint calculator
+Results translated in car miles & showers
   
-  Carbon footprint calculator
-  
-  Results translated in car miles & showers
-  
-Should have
-  Daily meal entries 
-  Total daily carbon footprint
-  Stats over time
+##Should have
+
+Daily meal entries 
+Total daily carbon footprint
+Stats over time
