@@ -42,13 +42,13 @@ router.post('/register', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   if(validateUser(req.body)) {
-    db.run(getUserByEmail, [req.body.username])
+    db.run(getUserByEmailOrUsername, [req.body.email, req.body.username])
       .then(resp => {
         if(resp.rows[0]) {
           bcrypt.compare(req.body.password, resp.rows[0].password)
             .then((result) => {
               if(result) {
-                const Token = jwt.sign({name: req.body.username}, 'shhh', {expiresIn: '1h'})
+                const Token = jwt.sign({name: req.body.username}, process.env.TOKEN_SECRET, {expiresIn: '1h'})
                 res.json({
                   accessToken: Token,
                   user_id: resp.rows[0].userid,
