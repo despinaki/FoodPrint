@@ -1,4 +1,4 @@
 const createUser = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *`
-const getUserByEmail = `SELECT * FROM users WHERE username = $1`;
+const getUserByEmailOrUsername = `SELECT * FROM users WHERE email = $1 OR username = $2`;
 
-module.exports = {createUser, getUserByEmail};
+module.exports = {createUser, getUserByEmailOrUsername};

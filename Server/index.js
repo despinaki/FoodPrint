@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const cors = require('cors')
-// const jwt = require('jsonwebtoken')
+
 
 const app = express();
 app.use(cors());
@@ -15,5 +15,7 @@ const authRoute = require('./auth/index');
 //Route middlewares
 app.use('/auth', authRoute)
 
+//root route
+app.get('/', (req, res) => res.send('Hello world!'));
 
 app.listen(PORT, () => console.log(`Express now departing from http://localhost:${PORT}`))

@@ -3,7 +3,7 @@ const db = require('../db/config');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
-const { getUserByEmail, createUser } = require('../db/queries');
+const { getUserByEmailOrUsername, createUser } = require('../db/queries');
 const { validateUser } = require('./helpers');
 
 const router = express.Router();
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res, next) => {
   if(validateUser(req.body)) {
-    db.run(getUserByEmail, [req.body.username])
+    db.run(getUserByEmailOrUsername, [req.body.email, req.body.username])
       .then(resp => {
         console.log(resp.rows[0])
         if(!resp.rows[0]) {
@@ -32,11 +32,11 @@ router.post('/register', (req, res, next) => {
                 })
             })
         } else {
-          next(new Error('Username already taken!'))
+          next(new Error('This username or email is already taken.'))
         }
       })
   } else {
-    next(new Error('Invalid User'));
+    next(new Error('Invalid user'));
   }
 })
 
@@ -63,7 +63,7 @@ router.post('/login', (req, res, next) => {
         }
       })
   } else {
-    next(new Error('Invalid Login'))
+    next(new Error('Invalid login'))
   }
 })
 
