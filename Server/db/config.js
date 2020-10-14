@@ -1,6 +1,5 @@
 const { Pool } = require("pg");
-
-// const pool = new Pool({ database: 'shelter'});
+//connect database to our server
 
 const pool = new Pool({
     user: process.env.DB_USER,
