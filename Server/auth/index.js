@@ -18,13 +18,11 @@ router.post('/register', (req, res, next) => {
   if(validateUser(req.body)) {
     db.run(getUserByEmailOrUsername, [req.body.email, req.body.username])
       .then(resp => {
-        console.log(resp.rows[0])
         if(!resp.rows[0]) {
           bcrypt.hash(req.body.password, 8)
             .then((hash) => {
               db.run(createUser, [req.body.username, req.body.email, hash])
                 .then(user => {
-                  console.log(user.rows)
                   res.json({
                     status: 201,
                     message: "✅"
