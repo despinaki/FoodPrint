@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS foods;
-DROP TABLE IF EXISTS meals;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS foods CASCADE;
+DROP TABLE IF EXISTS meals CASCADE;
 
 CREATE TABLE users(
     userid SERIAL,
@@ -24,15 +24,15 @@ CREATE TABLE foods (
     total_emissions FLOAT,
     total_water FLOAT,
     PRIMARY KEY (foodid)
-)
+);
 
 CREATE TABLE meals(
     userid INT,
     foodid INT,
     date DATE,
     FOREIGN KEY (userid) REFERENCES users(userid),
-    FOREIGN KEY (foodname) REFERENCES foods(foodid)
-)
+    FOREIGN KEY (foodid) REFERENCES foods(foodid)
+);
 
 INSERT INTO users(username, email, password)
 VALUES(
@@ -40,3 +40,10 @@ VALUES(
     'dummyemail@gmail.com',
     'dummypass'
 );
+
+-- COPY foods(foodname, landuse, farm, processing, transport, packing, retail, total_emissions, total_water)
+-- FROM 'C:\Users\despi\Desktop\futureproof\FoodPrint\Server\db\Food_Production.csv'
+-- DELIMITER ','
+-- CSV HEADER;
+-- ----------ACCESS DENIED USE \copy instead-------------
+\copy foods(foodname, landuse, farm, processing, transport, packing, retail, total_emissions, total_water) FROM 'C:\Users\despi\Desktop\futureproof\FoodPrint\Server\db\Food_Production.csv' WITH DELIMITER ',' CSV HEADER
