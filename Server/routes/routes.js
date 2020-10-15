@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/config');
 const router = express.Router();
 
-const {getFoodInfoByName, addFoodToDayMeal, getMealOfToday} = require('../db/queries');
+const {getFoodInfoByName, addFoodToDayMeal, getMealOfToday, showUserMeals, deleteFoodFromToday} = require('../db/queries');
 
 router.get('/', (req, res) => {
     res.json({
@@ -27,9 +27,23 @@ router.get('/meals/today', (req,res) => {
     .catch(err=> res.status(500).end())
 })
 //get all meals
+router.get('/meals/all', (req,res) =>{
+    db.run(showUserMeals, [req.query.userid])
+    .then(resp => {
+        if (!resp.rows){
+            res.json({
+                status: 404,
+                message:"No meals added yet."
+            })
+        } else {
+            res.status(200).json(resp.rows)
+        }
+    })
+    .catch(err=> res.status(500).end())
+})
 //get food info
 router.get('/foods/:foodname', (req,res) =>{
-    const foodname = req.query.params.foodname
+    const foodname = req.params.foodname
     db.run(getFoodInfoByName, [foodname])
     .then(resp => {
         if (!resp.rows[0]){
@@ -52,8 +66,14 @@ router.post('/meals/today', (req,res) => {
     })
     .catch(err=> res.status(500).end())
 })
-//add a meal to all meals??AKIRO NOMIZO
 //delete a food from the meal of the day
-//delete a meal from all meals
+router.delete('/meals/today/:foodid',  (req,res) => {
+    const today = new Date().toISOString().slice(0,10);
+    db.run(deleteFoodFromToday, [req.params.foodid, req.query.userid, today])
+    .then(resp => {
+        res.status(204).json(resp.rows)
+    })
+    .catch(err=> res.status(500).end())
+})
 
 module.exports = router;
