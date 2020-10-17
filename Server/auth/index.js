@@ -22,10 +22,11 @@ router.post('/register', (req, res, next) => {
           bcrypt.hash(req.body.password, 8)
             .then((hash) => {
               db.run(createUser, [req.body.username, req.body.email, hash])
-                .then(user => {
+                .then(resp => {
                   res.json({
                     status: 201,
-                    message: "✅"
+                    message: "Registered successfully.",
+                    user_id: resp.rows[0].userid
                   })
                 })
             })

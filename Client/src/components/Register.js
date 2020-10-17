@@ -13,27 +13,31 @@ export class Register extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const userData ={
-      username: this.state.user.username,
-      email: this.state.user.email,
-      password: this.state.user.password
+    if (this.state.user.password !== this.state.user.password2) {
+        alert("Passwords must match!")
+    } else {
+        const userData = {
+            username: this.state.user.username,
+            email: this.state.user.email,
+            password: this.state.user.password === this.state.user.password2 ? this.state.user.password : null
+        }
+        const options = {
+            headers: {"Content-Type": "application/json"},
+            method: "POST",
+            body: JSON.stringify(userData)
+          }
+          
+          const URL = 'http://localhost:5000'
+      
+          fetch(`${URL}/auth/register`, options)
+          .then(resp => resp.json())
+          .then(resp => {
+              if(resp.status === 201) {this.props.history.push('/login')}
+          })
+          .catch(err => alert('Invalid input'))
     }
-
-    const options = {
-      headers: {"Content-Type": "application/json"},
-      method: "POST",
-      body: JSON.stringify(userData)
-    }
-    
-    const URL = 'https://localhost:5000'
-
-    fetch(`${URL}/auth/register`, options)
-    .then(resp => resp.json())
-    .then(resp => {
-      if(resp.status === 201) {this.props.history.push('/login')}
-    })
-    .catch(err => alert('Invalid input'))
   }
+  
     render() {
         return (
           <div>
@@ -45,6 +49,8 @@ export class Register extends Component {
                 <input className="textbox" placeholder="example@example.com" type="text" name="email" onChange={this.handleInput} required></input><br/>
               <label htmlFor="password">Password</label><br/>
                 <input className="textbox" placeholder="password" type="password" name="password" onChange={this.handleInput} required></input><br/>
+              <label htmlFor="password2">Confirm password</label><br/>
+                <input className="textbox" placeholder="passwords must match" type="password" name="password2" onChange={this.handleInput} required></input><br/>
               <input type="submit" value="Register"></input>
             </form>
           </div>
