@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 //use this function to protect routes
 module.exports = function verifyToken (req, res, next) {
     const bearerHeader = req.headers['authorization'];
@@ -12,11 +11,3 @@ module.exports = function verifyToken (req, res, next) {
         res.sendStatus(403);
     } 
 };
-
-// try {
-//     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
-//     req.user = verified;
-//     next();
-// } catch {
-//     res.status(400).send('Invalid token.')
-// }
