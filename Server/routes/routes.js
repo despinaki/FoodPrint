@@ -1,8 +1,10 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const db = require('../db/config');
 const router = express.Router();
 
 const {getFoodInfoByName, addFoodToDayMeal, getMealOfToday, showUserMeals, deleteFoodFromToday} = require('../db/queries');
+const verifyToken = require('./verifyToken');
 
 router.get('/', (req, res) => {
     res.json({
@@ -74,6 +76,19 @@ router.delete('/meals/today/:foodid',  (req,res) => {
         res.status(204).json(resp.rows)
     })
     .catch(err=> res.status(500).end())
+})
+//mock protected route
+router.post("/posts", verifyToken, (req,res) => {
+    jwt.verify(req.token, process.env.TOKEN_SECRET, (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            res.json({
+                message: "Post created",
+                authData: authData
+            })
+        }
+    })
 })
 
 module.exports = router;
