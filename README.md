@@ -1,12 +1,12 @@
 # FoodPrint
 
-## Wed 14/10
+## Mon 19/10
 
--start react frontend
+-calculator form
 
--make register/login form components
+-add food to meal of the day
 
--make and try accessing a dummy protected route
+-save meals
 
 ## MVP
 
