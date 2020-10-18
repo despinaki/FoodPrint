@@ -1,12 +1,18 @@
 # FoodPrint
 
-## Mon 19/10
+## Mon-Tue 19/10
 
 -calculator form
 
 -add food to meal of the day
 
 -save meals
+
+-translate results in carmiles&showers
+
+-graph
+
+-picharts
 
 ## MVP
 
