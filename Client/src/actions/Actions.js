@@ -4,5 +4,5 @@ export const registerUser = userid => ({
 })
 export const endSession = () => ({
     type: 'LOG_OUT'
-  })
-  
+})
+

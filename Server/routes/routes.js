@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const db = require('../db/config');
 const router = express.Router();
 
-const {getFoodInfoByName, addFoodToDayMeal, getMealOfToday, showUserMeals, deleteFoodFromToday} = require('../db/queries');
+const {getFoodInfoByName, addFoodToDayMeal, getAllFoods, getMealOfToday, showUserMeals, deleteFoodFromToday} = require('../db/queries');
 const verifyToken = require('./verifyToken');
 
 router.get('/', (req, res) => {
@@ -36,6 +36,21 @@ router.get('/meals/all', (req,res) =>{
             res.json({
                 status: 404,
                 message:"No meals added yet."
+            })
+        } else {
+            res.status(200).json(resp.rows)
+        }
+    })
+    .catch(err=> res.status(500).end())
+})
+//get all foods
+router.get('/foods/all', (req,res) =>{
+    db.run(getAllFoods)
+    .then(resp => {
+        if (!resp){
+            res.json({
+                status: 404,
+                message:"No foods in our database yet."
             })
         } else {
             res.status(200).json(resp.rows)

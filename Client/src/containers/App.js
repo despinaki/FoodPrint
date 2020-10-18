@@ -4,6 +4,7 @@ import Login from '../components/Login';
 import Register from '../components/Register';
 import Welcome from './Welcome';
 import Dashboard from './Dashboard';
+import Calculator from './Calculator';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route exact path='/' component={ Welcome } />
         <Route exact path='/dashboard' component={ Dashboard } />
+        <Route exact path='/calculator' component={ Calculator } />
         <Route path="/register" component={ Register }/>
         <Route path="/login" component={ Login }/>
       </Switch>

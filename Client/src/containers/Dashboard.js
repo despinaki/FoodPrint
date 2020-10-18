@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { endSession } from '../actions/Actions';
+import { NavLink } from 'react-router-dom';
 
 function Dashboard(props) {
     const signOut = () => {props.logOut()}
@@ -8,6 +9,7 @@ function Dashboard(props) {
         return (
             <div>
                <p>accessed page!!!</p> 
+               <NavLink to="/calculator">Calculator</NavLink>
                <button onClick={signOut}>Log out</button>
             </div>
         )
