@@ -1,44 +1,44 @@
-Food product,Land use change,Farm,Processing,Transport,Packging,Retail,Total_emissions,Freshwater withdrawals per kilogram (liters per kilogram)
-Wheat & Rye (Bread),0.1,0.8,0.2,0.1,0.1,0.1,1.4,
-Maize (Meal),0.3,0.5,0.1,0.1,0.1,0,1.1,
-Barley (Beer),0,0.2,0.1,0,0.5,0.3,1.1,
-Oatmeal,0,1.4,0,0.1,0.1,0,1.6,482.4
-Rice,0,3.6,0.1,0.1,0.1,0.1,4,2248.4
-Potatoes,0,0.2,0,0.1,0,0,0.3,59.1
-Cassava,0.6,0.2,0,0.1,0,0,0.9,0
-Cane Sugar,1.2,0.5,0,0.8,0.1,0,2.6,620.1
-Beet Sugar,0,0.5,0.2,0.6,0.1,0,1.4,217.7
-Other Pulses,0,1.1,0,0.1,0.4,0,1.6,435.7
-Peas,0,0.7,0,0.1,0,0,0.8,396.6
-Nuts,-2.1,2.1,0,0.1,0.1,0,0.2,4133.8
-Groundnuts,0.4,1.4,0.4,0.1,0.1,0,2.4,1852.3
-Soymilk,0.2,0.1,0.2,0.1,0.1,0.3,1,27.8
-Tofu,1,0.5,0.8,0.2,0.2,0.3,3,
-Soybean Oil,3.1,1.5,0.3,0.3,0.8,0,6,414.6
-Palm Oil,3.1,2.1,1.3,0.2,0.9,0,7.6,6.4
-Sunflower Oil,0.1,2.1,0.2,0.2,0.9,0,3.5,1007.9
-Rapeseed Oil,0.2,2.3,0.2,0.2,0.8,0,3.7,237.7
-Olive Oil,-0.4,4.3,0.7,0.5,0.9,0,6,2141.8
-Tomatoes,0.4,0.7,0,0.2,0.1,0,1.4,369.8
-Onions & Leeks,0,0.2,0,0.1,0,0,0.3,14.3
-Root Vegetables,0,0.2,0,0.1,0,0,0.3,28.4
-Brassicas,0,0.3,0,0.1,0,0,0.4,119.4
-Other Vegetables,0,0.2,0.1,0.2,0,0,0.5,102.5
-Citrus Fruit,-0.1,0.3,0,0.1,0,0,0.3,82.7
-Bananas,0,0.3,0.1,0.3,0.1,0,0.8,114.5
-Apples,0,0.2,0,0.1,0,0,0.3,180.1
-Berries & Grapes,0,0.7,0,0.2,0.2,0,1.1,419.6
-Wine,-0.1,0.6,0.1,0.1,0.7,0,1.4,78.9
-Other Fruit,0.1,0.4,0,0.2,0,0,0.7,153.5
-Coffee,3.7,10.4,0.6,0.1,1.6,0.1,16.5,25.9
-Dark Chocolate,14.3,3.7,0.2,0.1,0.4,0,18.7,540.6
-Beef (beef herd),16.3,39.4,1.3,0.3,0.2,0.2,59.6,1451.2
-Beef (dairy herd),0.9,15.7,1.1,0.4,0.3,0.2,21.1,2714.3
-Lamb & Mutton,0.5,19.5,1.1,0.5,0.3,0.2,24.5,1802.8
-Pig Meat,1.5,1.7,0.3,0.3,0.3,0.2,7.2,1795.8
-Poultry Meat,2.5,0.7,0.4,0.3,0.2,0.2,6.1,660
-Milk,0.5,1.5,0.1,0.1,0.1,0.3,2.8,628.2
-Cheese,4.5,13.1,0.7,0.1,0.2,0.3,21.2,5605.2
-Eggs,0.7,1.3,0,0.1,0.2,0,4.5,577.7
-Fish (farmed),0.5,3.6,0,0.1,0.1,0,5.1,3691.3
-Shrimps (farmed),0.2,8.4,0,0.2,0.3,0.2,11.8,
+Food product,Category,Land use change,Farm,Processing,Transport,Packging,Retail,Total_emissions,Freshwater withdrawals per kilogram (liters per kilogram), One Serving, One Serving Weight (grams),
+Wheat & Rye (Bread),Grains,0.1,0.8,0.2,0.1,0.1,0.1,1.4,,two slices,56
+Maize (Meal),Grains,0.3,0.5,0.1,0.1,0.1,0,1.1,,,
+Barley (Beer),Grains,0,0.2,0.1,0,0.5,0.3,1.1,,one beer bottle(355mL),28.35
+Oatmeal,Grains,0,1.4,0,0.1,0.1,0,1.6,482.4,nine tablespoons dry rolled oats,51
+Rice,Grains,0,3.6,0.1,0.1,0.1,0.1,4,2248.4,onethird-half cup of dry rice,75
+Potatoes,Vegetables,0,0.2,0,0.1,0,0,0.3,59.1,two small potatoes,190
+Cassava,Vegetables,0.6,0.2,0,0.1,0,0,0.9,0,onethird-half cup of uncooked diced pieces,100
+Cane Sugar,Other,1.2,0.5,0,0.8,0.1,0,2.6,620.1,one teaspoon,5
+Beet Sugar,Other,0,0.5,0.2,0.6,0.1,0,1.4,217.7,one teaspoon,5
+Other Pulses,Pulses,0,1.1,0,0.1,0.4,0,1.6,435.7,uncooked,50
+Peas,Pulses,0,0.7,0,0.1,0,0,0.8,396.6,uncooked,50
+Nuts,Nuts,-2.1,2.1,0,0.1,0.1,0,0.2,4133.8,a small cupped handful,35
+Groundnuts,Nuts,0.4,1.4,0.4,0.1,0.1,0,2.4,1852.3,a small cupped handful,35
+Soymilk,Dairy and Dairy Alternatives,0.2,0.1,0.2,0.1,0.1,0.3,1,27.8,one cup,257
+Tofu,Dairy and Dairy Alternatives,1,0.5,0.8,0.2,0.2,0.3,3,,three quarters of a cup,150
+Soybean Oil,Oils,3.1,1.5,0.3,0.3,0.8,0,6,414.6,one tablespoon,13.5
+Palm Oil,Oils,3.1,2.1,1.3,0.2,0.9,0,7.6,6.4,one tablespoon,13.5
+Sunflower Oil,Oils,0.1,2.1,0.2,0.2,0.9,0,3.5,1007.9,one tablespoon,13.5
+Rapeseed Oil,Oils,0.2,2.3,0.2,0.2,0.8,0,3.7,237.7,one tablespoon,13.5
+Olive Oil,Oils,-0.4,4.3,0.7,0.5,0.9,0,6,2141.8,one tablespoon,13.5
+Tomatoes,Vegetables,0.4,0.7,0,0.2,0.1,0,1.4,369.8,one medium whole tomato,123
+Onions & Leeks,Vegetables,0,0.2,0,0.1,0,0,0.3,14.3,common individual portion,130
+Root Vegetables,Vegetables,0,0.2,0,0.1,0,0,0.3,28.4,common individual portion,60
+Brassicas,Vegetables,0,0.3,0,0.1,0,0,0.4,119.4,side portion(raw),115
+Other Vegetables,Vegetables,0,0.2,0.1,0.2,0,0,0.5,102.5,side portion(raw),150
+Citrus Fruit,Fruits,-0.1,0.3,0,0.1,0,0,0.3,82.7,one medium size orange or equivalent,135
+Bananas,Fruits,0,0.3,0.1,0.3,0.1,0,0.8,114.5,one medium size banana,120
+Apples,Fruits,0,0.2,0,0.1,0,0,0.3,180.1,one medium size apple,180
+Berries & Grapes,Fruits,0,0.7,0,0.2,0.2,0,1.1,419.6,one cup portion,130
+Wine,Other,-0.1,0.6,0.1,0.1,0.7,0,1.4,78.9,one glass,145
+Other Fruit,Fruits,0.1,0.4,0,0.2,0,0,0.7,153.5,one medium size fruit or equivalent,145
+Coffee,Other,3.7,10.4,0.6,0.1,1.6,0.1,16.5,25.9,one/one-and-half teaspoon,9
+Dark Chocolate,Other,14.3,3.7,0.2,0.1,0.4,0,18.7,540.6,three pieces,30
+Beef (beef herd),Meat,16.3,39.4,1.3,0.3,0.2,0.2,59.6,1451.2,one person recommended portion,225
+Beef (dairy herd),Meat,0.9,15.7,1.1,0.4,0.3,0.2,21.1,2714.3,one person recommended portion,225
+Lamb & Mutton,Meat,0.5,19.5,1.1,0.5,0.3,0.2,24.5,1802.8,one person recommended portion,225
+Pig Meat,Meat,1.5,1.7,0.3,0.3,0.3,0.2,7.2,1795.8,one person recommended portion,225
+Poultry Meat,Meat,2.5,0.7,0.4,0.3,0.2,0.2,6.1,660,one person recommended portion,225
+Milk,Dairy and Dairy Alternatives,0.5,1.5,0.1,0.1,0.1,0.3,2.8,628.2,one cup,257
+Cheese,Dairy and Dairy Alternatives,4.5,13.1,0.7,0.1,0.2,0.3,21.2,5605.2,two thin square slices,50
+Eggs,Other,0.7,1.3,0,0.1,0.2,0,4.5,577.7,one large egg,60
+Fish (farmed),Fish,0.5,3.6,0,0.1,0.1,0,5.1,3691.3,one person recommended portion,140
+Shrimps (farmed),Fish,0.2,8.4,0,0.2,0.3,0.2,11.8,,one person recommended portion,115

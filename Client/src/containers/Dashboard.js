@@ -9,7 +9,8 @@ function Dashboard(props) {
         return (
             <div>
                <p>accessed page!!!</p> 
-               <NavLink to="/calculator">Calculator</NavLink>
+               <h3>User: {props.userid}</h3>
+               <NavLink to="/calculator">Calculator</NavLink><br/>
                <button onClick={signOut}>Log out</button>
             </div>
         )

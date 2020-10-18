@@ -15,6 +15,7 @@ CREATE TABLE users(
 CREATE TABLE foods (
     foodid SERIAL,
     foodname VARCHAR(150),
+    category VARCHAR(100),
     landuse FLOAT,
     farm FLOAT,
     processing FLOAT,
@@ -23,6 +24,8 @@ CREATE TABLE foods (
     retail FLOAT,
     total_emissions FLOAT,
     total_water FLOAT,
+    one_serving VARCHAR(100),
+    serving_weight FLOAT,
     PRIMARY KEY (foodid)
 );
 
@@ -46,4 +49,4 @@ VALUES(
 -- DELIMITER ','
 -- CSV HEADER;
 -- ----------ACCESS DENIED USE \copy instead-------------
-\copy foods(foodname, landuse, farm, processing, transport, packing, retail, total_emissions, total_water) FROM 'C:\Users\despi\Desktop\futureproof\FoodPrint\Server\db\Food_Production.csv' WITH DELIMITER ',' CSV HEADER
+\copy foods(foodname, category, landuse, farm, processing, transport, packing, retail, total_emissions, total_water, one_serving, serving_weight) FROM 'C:\Users\despi\Desktop\futureproof\FoodPrint\Server\db\Food_Production.csv' WITH DELIMITER ',' CSV HEADER
