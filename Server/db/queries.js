@@ -7,6 +7,8 @@ const getMealOfToday = `SELECT meals.foodid, meals.userid, foods.total_emissions
 const showUserMeals = `SELECT meals.foodid, meals.userid, foods.total_emissions, foods.total_water FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.userid=$1`
 const deleteFoodFromToday = `DELETE FROM meals WHERE foodid=$1 AND date=TO_DATE($3,'YYYY-MM-DD') AND userid=$2 RETURNING *`
 const getAllFoods = `SELECT foodname FROM foods`
+const getCategories = `SELECT DISTINCT category FROM foods`
+const getFoodsByCategory = `SELECT foodname FROM foods WHERE category=$1`
 
 module.exports = {
     createUser, 
@@ -16,5 +18,7 @@ module.exports = {
     getMealOfToday, 
     showUserMeals, 
     deleteFoodFromToday,
-    getAllFoods
+    getAllFoods,
+    getCategories,
+    getFoodsByCategory
 };

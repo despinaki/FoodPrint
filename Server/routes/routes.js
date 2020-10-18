@@ -3,7 +3,16 @@ const jwt = require('jsonwebtoken');
 const db = require('../db/config');
 const router = express.Router();
 
-const {getFoodInfoByName, addFoodToDayMeal, getAllFoods, getMealOfToday, showUserMeals, deleteFoodFromToday} = require('../db/queries');
+const {
+    getFoodInfoByName, 
+    addFoodToDayMeal, 
+    getAllFoods, 
+    getMealOfToday, 
+    showUserMeals, 
+    deleteFoodFromToday,
+    getCategories,
+    getFoodsByCategory} = require('../db/queries');
+
 const verifyToken = require('./verifyToken');
 
 router.get('/', (req, res) => {
@@ -47,14 +56,23 @@ router.get('/meals/all', (req,res) =>{
 router.get('/foods/all', (req,res) =>{
     db.run(getAllFoods)
     .then(resp => {
-        if (!resp){
-            res.json({
-                status: 404,
-                message:"No foods in our database yet."
-            })
-        } else {
-            res.status(200).json(resp.rows)
-        }
+        res.status(200).json(resp.rows)
+    })
+    .catch(err=> res.status(500).end())
+})
+//get all food categories
+router.get('/foods/categories', (req,res)=>{
+    db.run(getCategories)
+    .then(resp => {
+        res.status(200).json(resp.rows)
+    })
+    .catch(err=> res.status(500).end())
+})
+//get foods by category
+router.get('/foods/categories/:category',(req,res) => {
+    db.run(getFoodsByCategory,[req.params.category])
+    .then(resp => {
+        res.status(200).json(resp.rows)
     })
     .catch(err=> res.status(500).end())
 })
