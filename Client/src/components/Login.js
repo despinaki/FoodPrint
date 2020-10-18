@@ -34,14 +34,11 @@ export class Login extends Component {
         .then(resp => {
             this.props.setUserId(resp.user_id)
             return resp})
-        .then(r => {
-            alert('Logged in!')
+        .then(data => {
+            if(data.user_id){
+                this.props.history.push('/dashboard')
+            }
         })
-        // .then(data => {
-        //     if(data.user_id){
-        //         this.props.history.push('/')
-        //     }
-        // })
         .catch(err => alert('Invalid Login'))
     }
 
