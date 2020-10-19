@@ -10,7 +10,8 @@ class Calculator extends Component {
         foodChosen: "",
         quantityChosen: "",
         foodinfo: {},
-        showResults: false
+        showResults: false, 
+        showBreakdown: true
     }
     componentDidMount() {
         const URL = "http://localhost:5000"
@@ -49,10 +50,17 @@ class Calculator extends Component {
         .catch(error => console.log(error))
     }
     
+    alterShow = () => {
+        this.setState(prevState => ({
+            showBreakdown: !prevState.showBreakdown
+        }))
+    }
+    
     render() {
         let resultsParagraph;
         let servingInfo;
         let resultsTranslation;
+        
         if (Object.keys(this.state.foodinfo).length > 0 && this.state.showResults) {
             const result = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_emissions;
             const resultWater = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_water;
@@ -102,6 +110,11 @@ class Calculator extends Component {
                 {servingInfo}
                 {resultsParagraph}
                 {resultsTranslation}
+                {this.state.showResults && <p onClick={this.alterShow}>{this.state.showBreakdown ? 'Show less' : 'Show more'}</p>}
+                { 
+                    this.state.showBreakdown && this.state.showResults &&
+                       <p>hellooooo</p>
+                }
             </div>
         )
     }
