@@ -18,7 +18,7 @@ export default class PieChart extends Component {
         const appendDatapoints = (process) => {
             if (process > 0) {
                 const idx = orderedArray.indexOf(process)
-                datapoints.push({y: process, label: orderedLabels[idx]})
+                datapoints.push({y: process.toFixed(1), label: orderedLabels[idx]})
             }
         }
         for (const process of orderedArray) {
