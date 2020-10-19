@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PieChart from '../components/PieChart';
 
 class Calculator extends Component {
     state = {
@@ -11,7 +12,7 @@ class Calculator extends Component {
         quantityChosen: "",
         foodinfo: {},
         showResults: false, 
-        showBreakdown: true
+        showBreakdown: false
     }
     componentDidMount() {
         const URL = "http://localhost:5000"
@@ -113,7 +114,7 @@ class Calculator extends Component {
                 {this.state.showResults && <p onClick={this.alterShow}>{this.state.showBreakdown ? 'Show less' : 'Show more'}</p>}
                 { 
                     this.state.showBreakdown && this.state.showResults &&
-                       <p>hellooooo</p>
+                       <PieChart foodinfo={this.state.foodinfo} foodname={this.state.foodChosen} />
                 }
             </div>
         )
