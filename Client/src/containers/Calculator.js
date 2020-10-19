@@ -39,7 +39,7 @@ class Calculator extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const foodname = this.state.foodChosen;
-        const URL = "http://localhost:5000"
+        const URL = "http://localhost:5000";
         fetch(`${URL}/api/foods/${foodname}`)
         .then(resp => resp.json())
         .then(resp => this.setState({foodinfo: resp}))
@@ -47,16 +47,26 @@ class Calculator extends Component {
     }
     
     render() {
-        let paragraph;
+        let resultsParagraph;
+        let servingInfo;
+        let resultsTranslation;
         if (Object.keys(this.state.foodinfo).length > 0) {
-            paragraph = <p>Has some staff</p>
+            const result = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_emissions
+            const yearlyEq = (this.state.foodinfo.serving_weight/1000) * this.state.foodinfo.total_emissions * 52 * 2.5
+            servingInfo = <p>{`One serving corresponds to ${this.state.foodinfo.one_serving} (${this.state.foodinfo.serving_weight} g).`}</p>;
+            resultsParagraph = <p>{`Total CO2 emissions: ${result} kg CO2-equivalents.`}</p>
+            resultsTranslation = <p>{`Consuming a serving of this food 2-3 times a week contributes to a yearly total of ${yearlyEq}
+             kg CO2-equivalents in emissions,`}</p>
         } else {
-            paragraph = <p></p>
+            servingInfo = <p></p>
+            resultsParagraph = <p></p>
+            resultsTranslation = <p></p>
         }
 
         return (
             <div>
                 <h1>User: {this.state.userid}</h1>
+                <h2>See how the production of the foods you eat impacts the environment</h2>
                 <form id ="calcForm" onSubmit={this.handleSubmit}>
                     <label htmlFor="category">Category</label><br/>
                         <input type="search" list="all-categories" name="category" onChange={this.handleInput} required></input><br/>
@@ -69,7 +79,8 @@ class Calculator extends Component {
         {this.state.foodsForCategory.map((item,idx) => (<option key={idx}>{item.foodname}</option>))}
                         </datalist>
                     <label htmlFor="quantity">Quantity</label><br/>
-                        <select for="calcForm" name="quantity" onChange={this.handleInput} required>
+                        <select htmlFor="calcForm" name="quantity" onChange={this.handleInput} required>
+                            <option value="" disabled selected>Select quantity</option>
                             <option value="0.5">Half serving</option>
                             <option value="1">One serving</option>
                             <option value="2">Two servings</option>
@@ -77,7 +88,9 @@ class Calculator extends Component {
                     <input type="submit" value="Submit"></input>
                 </form>
 
-                {paragraph}
+                {servingInfo}
+                {resultsParagraph}
+                {resultsTranslation}
             </div>
         )
     }
