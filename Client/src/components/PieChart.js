@@ -29,7 +29,7 @@ export default class PieChart extends Component {
 			theme: "dark2",
 			animationEnabled: true,
 			exportFileName: "Processes contribution breakdown",
-			exportEnabled: true,
+			exportEnabled: false,
 			title:{
 				text: `Production processes contributing to the environmental impact of ${this.props.foodname}`
 			},
