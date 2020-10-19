@@ -9,7 +9,8 @@ class Calculator extends Component {
         foodsForCategory: [],
         foodChosen: "",
         quantityChosen: "",
-        foodinfo: {}
+        foodinfo: {},
+        showResults: false
     }
     componentDidMount() {
         const URL = "http://localhost:5000"
@@ -34,10 +35,12 @@ class Calculator extends Component {
 
     handleInput = e => {
         this.setState({[`${e.target.name}Chosen`]: e.target.value})
+        this.setState({showResults: false})
     }
 
     handleSubmit = e => {
         e.preventDefault();
+        this.setState({showResults: true})
         const foodname = this.state.foodChosen;
         const URL = "http://localhost:5000";
         fetch(`${URL}/api/foods/${foodname}`)
@@ -50,13 +53,21 @@ class Calculator extends Component {
         let resultsParagraph;
         let servingInfo;
         let resultsTranslation;
-        if (Object.keys(this.state.foodinfo).length > 0) {
-            const result = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_emissions
-            const yearlyEq = (this.state.foodinfo.serving_weight/1000) * this.state.foodinfo.total_emissions * 52 * 2.5
+        if (Object.keys(this.state.foodinfo).length > 0 && this.state.showResults) {
+            const result = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_emissions;
+            const resultWater = (this.state.foodinfo.serving_weight/1000) * parseFloat(this.state.quantityChosen) * this.state.foodinfo.total_water;
+            const yearlyEq = (this.state.foodinfo.serving_weight/1000) * this.state.foodinfo.total_emissions * 52 * 2.5;
+            const yearlyEqWater = (this.state.foodinfo.serving_weight/1000) * (this.state.foodinfo.total_water) * 52 * 2.5;
+
             servingInfo = <p>{`One serving corresponds to ${this.state.foodinfo.one_serving} (${this.state.foodinfo.serving_weight} g).`}</p>;
-            resultsParagraph = <p>{`Total CO2 emissions: ${result} kg CO2-equivalents.`}</p>
-            resultsTranslation = <p>{`Consuming a serving of this food 2-3 times a week contributes to a yearly total of ${yearlyEq}
-             kg CO2-equivalents in emissions,`}</p>
+            resultsParagraph = <p>{`Total CO2 emissions: ${result.toFixed(2)} kg CO2-equivalents.`}<br/>
+            {`Total fresh water withdrawals: ${resultWater.toFixed(2)} L water.`}</p>
+            resultsTranslation = <p>{`Consuming a serving of ${this.state.foodChosen.toLowerCase()} 2-3 times a week contributes to a yearly
+             total of ${yearlyEq.toFixed(2)} kg CO2-equivalents in emissions and ${yearlyEqWater.toFixed(2)} L in fresh water withdrawals.`}<br/>
+             {`This is the same as driving a regular petrol car for ${(yearlyEq * 4.13).toFixed(2)} km (${(yearlyEq * 2.57).toFixed(2)} miles),`}<br/>
+             {`or heating an average UK home for ${(yearlyEq * 0.15).toFixed(2)} days.`}<br/>
+             {`Also the same as taking ${(yearlyEqWater/88).toFixed(2)} eight-minute showers.`}</p>
+
         } else {
             servingInfo = <p></p>
             resultsParagraph = <p></p>
