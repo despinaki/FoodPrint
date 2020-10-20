@@ -56,6 +56,12 @@ class Calculator extends Component {
             showBreakdown: !prevState.showBreakdown
         }))
     }
+
+    clearForm = () => {
+        document.getElementById("calcForm").reset();
+        this.setState({showResults: false});
+        this.setState({showBreakdown: false});
+    }
     
     render() {
         let resultsParagraph;
@@ -116,6 +122,7 @@ class Calculator extends Component {
                     this.state.showBreakdown && this.state.showResults &&
                        <PieChart foodinfo={this.state.foodinfo} foodname={this.state.foodChosen} />
                 }
+                <button onClick={this.clearForm}><a href="#calcForm">Calculate another</a></button>
             </div>
         )
     }
