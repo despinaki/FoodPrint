@@ -117,18 +117,5 @@ router.delete('/meals/today/:foodid',  (req,res) => {
     })
     .catch(err=> res.status(500).end())
 })
-//mock protected route
-router.post("/posts", verifyToken, (req,res) => {
-    jwt.verify(req.token, process.env.TOKEN_SECRET, (err, authData) => {
-        if(err) {
-            res.sendStatus(403);
-        } else {
-            res.json({
-                message: "Post created",
-                authData: authData
-            })
-        }
-    })
-})
 
 module.exports = router;

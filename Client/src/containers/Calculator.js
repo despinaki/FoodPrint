@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PieChart from '../components/PieChart';
 import Header from '../components/Header';
+import AddFoodButton from '../components/AddFoodButton';
 
 class Calculator extends Component {
     state = {
@@ -108,7 +109,7 @@ class Calculator extends Component {
                         </datalist>
                     <label htmlFor="quantity">Quantity</label><br/>
                         <select htmlFor="calcForm" name="quantity" onChange={this.handleInput} required>
-                            <option value="" disabled selected>Select quantity</option>
+                            <option defaultValue="" selected disabled >Select quantity</option>
                             <option value="0.5">Half serving</option>
                             <option value="1">One serving</option>
                             <option value="2">Two servings</option>
@@ -124,7 +125,14 @@ class Calculator extends Component {
                     this.state.showBreakdown && this.state.showResults &&
                        <PieChart foodinfo={this.state.foodinfo} foodname={this.state.foodChosen} />
                 }
-                <button onClick={this.clearForm}><a href="#calcForm">Calculate another</a></button>
+                {
+                    this.state.showResults &&
+                    <button onClick={this.clearForm}><a href="#calcForm">Calculate another</a></button>
+                }
+                {
+                    Object.keys(this.state.foodinfo).length > 0 && this.state.showResults &&
+                    <AddFoodButton foodinfo={this.state.foodinfo} quantity={this.state.quantityChosen}/>
+                }
             </div>
         )
     }
