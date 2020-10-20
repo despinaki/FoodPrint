@@ -1,5 +1,6 @@
 const initialState = {
-    userid: ''
+    userid: '',
+    token: ''
 }
 
 const Reducer = (state = initialState, action) => {
@@ -8,8 +9,8 @@ const Reducer = (state = initialState, action) => {
             return {...state, userid: action.payload}
         case 'LOG_OUT':
             return {...state, userid: ''}
-        case 'ADD_TOKEN':
-            return {...state, accessToken: action.payload}
+        case 'SAVE_TOKEN':
+            return {...state, token: action.payload}
         default:
             return state;
     }

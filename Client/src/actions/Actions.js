@@ -5,7 +5,7 @@ export const logUser = userid => ({
 export const endSession = () => ({
     type: 'LOG_OUT'
 })
-export const saveToken = () => ({
+export const saveToken = (token) => ({
     type: "SAVE_TOKEN",
     payload: token
 })

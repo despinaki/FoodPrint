@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {logUser} from '../actions/Actions';
+import {logUser, saveToken} from '../actions/Actions';
 import { connect } from 'react-redux';
 
 export class Login extends Component {
@@ -34,6 +34,9 @@ export class Login extends Component {
         .then(resp => {
             this.props.setUserId(resp.user_id)
             return resp})
+        .then(resp => {
+            this.props.getToken(resp.accessToken)
+            return resp})
         .then(data => {
             if(data.user_id){
                 this.props.history.push('/dashboard')
@@ -61,7 +64,8 @@ export class Login extends Component {
 }
 
 const mDTP = dispatch => ({
-    setUserId: (userid) => dispatch(logUser(userid))
+    setUserId: (userid) => dispatch(logUser(userid)),
+    getToken: (token) => dispatch(saveToken(token))
 })
 
 export default connect(null, mDTP)(Login)
