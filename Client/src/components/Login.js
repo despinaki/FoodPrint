@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {registerUser} from '../actions/Actions';
+import {logUser} from '../actions/Actions';
 import { connect } from 'react-redux';
 
 export class Login extends Component {
@@ -61,7 +61,7 @@ export class Login extends Component {
 }
 
 const mDTP = dispatch => ({
-    setUserId: (userid) => dispatch(registerUser(userid))
+    setUserId: (userid) => dispatch(logUser(userid))
 })
 
 export default connect(null, mDTP)(Login)

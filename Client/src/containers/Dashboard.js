@@ -1,17 +1,19 @@
 import React from 'react'
+import Header from '../components/Header'
 import { connect } from 'react-redux';
-import { endSession } from '../actions/Actions';
+// import { endSession } from '../actions/Actions';
 import { NavLink } from 'react-router-dom';
 
 function Dashboard(props) {
-    const signOut = () => {props.logOut()}
+    // const signOut = () => {props.logOut()}
     if(props.userid){
         return (
             <div>
+               <Header />
                <p>accessed page!!!</p> 
                <h3>User: {props.userid}</h3>
-               <NavLink to="/calculator">Calculator</NavLink><br/>
-               <button onClick={signOut}>Log out</button>
+               {/* <NavLink to="/calculator">Calculator</NavLink><br/> */}
+               {/* <button onClick={signOut}>Log out</button> */}
             </div>
         )
     } else {
@@ -23,8 +25,8 @@ function Dashboard(props) {
 const mSTP = state => ({
     userid: state.userid
 })
-const mDTP = dispatch => ({
-    logOut: () => dispatch(endSession())
-})
+// const mDTP = dispatch => ({
+//     logOut: () => dispatch(endSession())
+// })
 
-export default connect(mSTP,mDTP)(Dashboard)
+export default connect(mSTP)(Dashboard)

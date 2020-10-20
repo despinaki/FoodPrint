@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PieChart from '../components/PieChart';
+import Header from '../components/Header';
 
 class Calculator extends Component {
     state = {
@@ -91,6 +92,7 @@ class Calculator extends Component {
 
         return (
             <div>
+                <Header />
                 <h1>User: {this.state.userid}</h1>
                 <h2>See how the production of the foods you eat impacts the environment</h2>
                 <form id ="calcForm" onSubmit={this.handleSubmit}>

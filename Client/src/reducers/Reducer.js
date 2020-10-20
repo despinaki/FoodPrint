@@ -4,7 +4,7 @@ const initialState = {
 
 const Reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'REGISTER_USER':
+        case 'LOG_USER':
             return {...state, userid: action.payload}
         case 'LOG_OUT':
             return {...state, userid: ''}
