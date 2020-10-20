@@ -32,6 +32,7 @@ CREATE TABLE foods (
 CREATE TABLE meals(
     userid INT,
     foodid INT,
+    quantity FLOAT,
     date DATE,
     FOREIGN KEY (userid) REFERENCES users(userid),
     FOREIGN KEY (foodid) REFERENCES foods(foodid)

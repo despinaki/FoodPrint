@@ -93,13 +93,20 @@ router.get('/foods/:foodname', (req,res) =>{
     .catch(err=> res.status(500).end())
 })
 //add a food to the meal of the day
-router.post('/meals/today', (req,res) => {
+router.post('/meals/today', verifyToken, (req,res) => {
     const today = new Date().toISOString().slice(0,10);
-    db.run(addFoodToDayMeal, [req.body.userid, req.body.foodid, today])
-    .then(resp => {
-        res.status(201).json(resp.rows[0])
+
+    jwt.verify(req.token, process.env.TOKEN_SECRET, (err, authData) => {
+        if(err) {
+            res.sendStatus(403);
+        } else {
+            db.run(addFoodToDayMeal, [req.body.userid, req.body.foodid, req.body.quantity, today])
+            .then(resp => {
+                res.status(201).json({data: resp.rows[0], authData: authData})
+            })
+            .catch(err=> res.status(500).end())
+        }
     })
-    .catch(err=> res.status(500).end())
 })
 //delete a food from the meal of the day
 router.delete('/meals/today/:foodid',  (req,res) => {

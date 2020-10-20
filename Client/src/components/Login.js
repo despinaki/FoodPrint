@@ -37,8 +37,8 @@ export class Login extends Component {
         .then(resp => {
             this.props.getToken(resp.accessToken)
             return resp})
-        .then(data => {
-            if(data.user_id){
+        .then(resp => {
+            if(resp.user_id && resp.accessToken){
                 this.props.history.push('/dashboard')
             }
         })
