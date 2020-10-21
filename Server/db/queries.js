@@ -5,10 +5,11 @@ const getFoodInfoByName = `SELECT foodid, foodname, total_emissions, total_water
 const addFoodToDayMeal = `INSERT INTO meals(userid, foodid, quantity, date) VALUES ($1, $2, $3, TO_DATE($4,'YYYY-MM-DD')) RETURNING *`;
 const getMealOfToday = `SELECT meals.foodid, meals.userid, foods.total_emissions, foods.total_water FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.date=TO_DATE($1, 'yyyy-mm-dd') AND meals.userid=$2`;
 const showUserMeals = `SELECT meals.foodid, foods.foodname, meals.userid, meals.quantity, meals.date, foods.serving_weight, foods.total_emissions, foods.total_water FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.userid=$1`;
-const deleteFoodFromToday = `DELETE FROM meals WHERE foodid=$1 AND date=TO_DATE($3,'YYYY-MM-DD') AND userid=$2 RETURNING *`
-const getAllFoods = `SELECT foodname FROM foods`
-const getCategories = `SELECT DISTINCT category FROM foods`
-const getFoodsByCategory = `SELECT foodname FROM foods WHERE category=$1`
+const deleteFoodFromToday = `DELETE FROM meals WHERE foodid=$1 AND date=TO_DATE($3,'YYYY-MM-DD') AND userid=$2 RETURNING *`;
+const getAllFoods = `SELECT foodname FROM foods`;
+const getCategories = `SELECT DISTINCT category FROM foods`;
+const getFoodsByCategory = `SELECT foodname FROM foods WHERE category=$1`;
+const getUserEmissionsGrouped = `SELECT meals.date, SUM(total_emissions*quantity*serving_weight/1000) FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.userid=$1 GROUP BY date;`;
 
 module.exports = {
     createUser, 
@@ -20,5 +21,6 @@ module.exports = {
     deleteFoodFromToday,
     getAllFoods,
     getCategories,
-    getFoodsByCategory
+    getFoodsByCategory,
+    getUserEmissionsGrouped
 };

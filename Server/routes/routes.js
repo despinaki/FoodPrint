@@ -11,7 +11,8 @@ const {
     showUserMeals, 
     deleteFoodFromToday,
     getCategories,
-    getFoodsByCategory} = require('../db/queries');
+    getFoodsByCategory,
+    getUserEmissionsGrouped} = require('../db/queries');
 
 const verifyToken = require('./verifyToken');
 
@@ -49,6 +50,14 @@ router.get('/:userid/meals/all', (req,res) =>{
         } else {
             res.status(200).json(resp.rows)
         }
+    })
+    .catch(err=> res.status(500).end())
+})
+//get all emissions by user's meals
+router.get('/:userid/allemissions', (req,res) =>{
+    db.run(getUserEmissionsGrouped, [req.params.userid])
+    .then(resp => {
+        res.status(200).json(resp.rows)
     })
     .catch(err=> res.status(500).end())
 })

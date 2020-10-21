@@ -30,7 +30,7 @@ class AllMeals extends Component {
                                         {Object.keys(food).map((key, idx) => {
                                         return (
                                             <div key={idx}>
-                                                {food[key]===date ? <p>{food["foodname"]}: {((food["serving_weight"]/1000) * food["quantity"] * food["total_emissions"]).toFixed(2)}</p> : ""} 
+                                                {food[key]===date ? <p>{food["foodname"]}: {((food["serving_weight"]/1000) * food["quantity"] * food["total_emissions"]).toFixed(2)} kg CO2-equivalents</p> : ""} 
                                             </div>
                                         )
                                     })}
