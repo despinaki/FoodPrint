@@ -76,7 +76,7 @@ class Graph extends Component {
 				name: "CO2 emissions",
 				showInLegend: true,
 				xValueFormatString: "DDD",
-				yValueFormatString: "####.##",
+				yValueFormatString: "###0.## kg CO2-equiv",
 				dataPoints: emissionsDataPoints
 			},
 			{
@@ -85,7 +85,7 @@ class Graph extends Component {
 				axisYType: "secondary",
 				showInLegend: true,
 				xValueFormatString: "DDD",
-				yValueFormatString: "#####.##",
+				yValueFormatString: "####0.## L",
 				dataPoints: waterWasteDataPoints
 			}]
 		}
