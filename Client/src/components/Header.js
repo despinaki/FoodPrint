@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link, NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import Logout from "./Logout"
+import { NavLink } from "react-router-dom";
 
 export default class Header extends Component {
     render() {
@@ -18,12 +16,9 @@ export default class Header extends Component {
                     </NavLink>
                 </li>
                 <li className="navtext">
-                    <NavLink className="navlink" to="/allmeals">
+                    <NavLink className="navlink" to="/meals">
                         Meals
                     </NavLink>
-                </li>
-                <li className="navtext">
-                    <Logout/>
                 </li>
             </ul>
         );

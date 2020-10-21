@@ -22,9 +22,9 @@ router.get('/', (req, res) => {
 });
 //------------RESTful routes--------------
 //get the meal for the day
-router.get('/meals/today', (req,res) => {
+router.get('/:userid/meals/today', (req,res) => {
     const today = new Date().toISOString().slice(0,10);
-    db.run(getMealOfToday, [today, req.query.userid])
+    db.run(getMealOfToday, [today, req.params.userid])
     .then(resp => {
         if(!resp.rows) {
             res.json({
@@ -38,8 +38,8 @@ router.get('/meals/today', (req,res) => {
     .catch(err=> res.status(500).end())
 })
 //get all meals
-router.get('/meals/all', (req,res) =>{
-    db.run(showUserMeals, [req.query.userid])
+router.get('/:userid/meals/all', (req,res) =>{
+    db.run(showUserMeals, [req.params.userid])
     .then(resp => {
         if (!resp.rows){
             res.json({

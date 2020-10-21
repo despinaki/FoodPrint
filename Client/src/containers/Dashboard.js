@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import { connect } from 'react-redux';
+import Logout from "../components/Logout" 
 
 function Dashboard(props) {
     if(props.userid && props.token){
@@ -9,6 +10,7 @@ function Dashboard(props) {
                <Header />
                <p>accessed page!!!</p> 
                <h3>User: {props.userid}</h3>
+                <Logout/>
             </div>
         )
     } else {
