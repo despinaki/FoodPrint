@@ -2,14 +2,15 @@ import React from 'react'
 import Header from '../components/Header'
 import { connect } from 'react-redux';
 import Logout from "../components/Logout" 
+import Graph from "../components/Graph"
 
 function Dashboard(props) {
     if(props.userid && props.token){
         return (
             <div>
-               <Header />
-               <p>accessed page!!!</p> 
-               <h3>User: {props.userid}</h3>
+                <Header />
+                <h3>User: {props.userid}</h3>
+                <Graph />
                 <Logout/>
             </div>
         )

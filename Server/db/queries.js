@@ -9,7 +9,7 @@ const deleteFoodFromToday = `DELETE FROM meals WHERE foodid=$1 AND date=TO_DATE(
 const getAllFoods = `SELECT foodname FROM foods`;
 const getCategories = `SELECT DISTINCT category FROM foods`;
 const getFoodsByCategory = `SELECT foodname FROM foods WHERE category=$1`;
-const getUserEmissionsGrouped = `SELECT meals.date, SUM(total_emissions*quantity*serving_weight/1000) FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.userid=$1 GROUP BY date;`;
+const getUserEmissionsGrouped = `SELECT meals.date, SUM(total_emissions*quantity*serving_weight/1000) AS emissions_sum, SUM(total_water*quantity*serving_weight/1000) AS water_sum FROM meals JOIN foods ON meals.foodid = foods.foodid WHERE meals.userid=$1 GROUP BY date;`;
 
 module.exports = {
     createUser, 
