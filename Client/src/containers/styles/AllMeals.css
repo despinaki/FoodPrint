@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    position: relative;
+    top: 100px;
+    text-align: center;
+    margin-left: calc(50% - 525px);
+}
+
+.grid-item {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.grid-item p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+.grid-item h3 {
+    font-family: 'Open Sans', serif;
+    font-size: 22px;
+}

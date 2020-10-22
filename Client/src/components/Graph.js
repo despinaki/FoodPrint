@@ -7,7 +7,7 @@ import './styles/Graph.css'
 
 CanvasJS.addColorSet("customColorSet1",
 	[//colorSet Array
-	"#918560",
+	"#BD3D21",
 	"#559bd1",
 ]);
 
@@ -65,10 +65,10 @@ class Graph extends Component {
 			},
 			axisY: {
 				title: "CO2 emissions (kg CO2-equivalents)",
-				titleFontColor: "#918560",
-				lineColor: "#918560",
-				labelFontColor: "#918560",
-				tickColor: "#918560"
+				titleFontColor: "#BD3D21",
+				lineColor: "#BD3D21",
+				labelFontColor: "#BD3D21",
+				tickColor: "#BD3D21"
 			},
 			axisY2: {
 				title: "Water waste (L)",

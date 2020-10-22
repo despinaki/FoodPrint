@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
+import './styles/AllMeals.css';
 
 class AllMeals extends Component {
     state = {
@@ -20,9 +21,10 @@ class AllMeals extends Component {
         return (
             <div>
                 <Header />
+                <div id="grid-container">
                 {allDates.map((date, idx) => {
                     return (
-                        <div key={idx}>
+                        <div key={idx} className="grid-item">
                             <h3>Date: {date.slice(0,10)}</h3>
                             {this.state.allMeals.map((food, index) => {
                                 return (
@@ -30,7 +32,7 @@ class AllMeals extends Component {
                                         {Object.keys(food).map((key, idx) => {
                                         return (
                                             <div key={idx}>
-                                                {food[key]===date ? <p>{food["foodname"]}: {((food["serving_weight"]/1000) * food["quantity"] * food["total_emissions"]).toFixed(2)} kg CO2-equivalents</p> : ""} 
+                                                {food[key]===date ? <p>{food["foodname"]}: {food["quantity"]} serving(s) ({food["serving_weight"]*food["quantity"]} g)</p> : ""} 
                                             </div>
                                         )
                                     })}
@@ -41,6 +43,7 @@ class AllMeals extends Component {
                     )
                 })}
                 {/* serving_weight/1000 (kg)* quantity * total_emissions (CO2 eq per kg) */}
+                </div>
             </div>
         )
     }
