@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
+
+#login-wrap {
+    background-color: white;
+    text-align: center;
+    width: 900px;
+    height: 450px;
+    position: relative;
+    left: calc(50% - 450px);
+    top:50px;
+}
+#login-wrap img {
+    width: 450px;
+    height: auto;
+    position: absolute;
+    left: 0;
+}
+
+.textbox {
+    width: 150px;
+    height: 25px;
+}
+
+#name, #pass, #login, .textbox {
+    font-family: 'Open Sans', sans-serif;
+    position: absolute;
+    left: 465px;
+}
+
+#name {
+    top: 125px;
+}
+#nametext {
+    top: 150px;
+}
+#pass {
+    top: 180px;
+}
+#passtext {
+    top: 205px;
+}
+#login {
+    top: 250px;
+    left: calc(465px + 75px/2);
+    font-size: 18px;
+    color: white;
+    width: 80px;
+    height: 40px;
+    background-color: #6F7D57;
+    border-width: 0;
+}
+
+#login:hover {
+    background-color: rgba(111, 125, 87, 0.6);
+    cursor: pointer;
+}

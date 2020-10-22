@@ -48,16 +48,16 @@ export class Login extends Component {
 
     render() {
         return (
-            <div>
-              <h1>Log in</h1>
+            <div id="login-wrap">
+              <img src="../assets/foodprint.png" alt="logo"></img>
               <form onSubmit={this.handleSubmit}>
 
-                <label htmlFor="username">Username</label><br/>
-                  <input  className="textbox" type="text" name="username" onChange={this.handleInput}></input><br/>
-                <label htmlFor="username">Password</label><br/>
-                  <input className="textbox" type="password" name="password" onChange={this.handleInput}></input><br/>
+                <label htmlFor="username" id="name">Username:</label><br/>
+                  <input  className="textbox" id="nametext" type="text" name="username" onChange={this.handleInput}></input><br/>
+                <label htmlFor="username" id="pass">Password:</label><br/>
+                  <input className="textbox" id="passtext" type="password" name="password" onChange={this.handleInput}></input><br/>
 
-                  <input type="submit"></input>
+                  <input type="submit" value="Log in" id="login"></input>
                 </form>
             </div>
         )
