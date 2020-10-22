@@ -26,7 +26,7 @@
 }
 
 #faded-text {
-    font-size: 18px;
+    font-size: 17px;
     color:#404040;
 }
 
@@ -52,6 +52,6 @@
 }
 
 .welcome-button:hover {
-    background-color: rgba(111, 125, 87, 0.6);
+    background-color:black;
     cursor: pointer;
 }

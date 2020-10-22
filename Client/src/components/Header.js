@@ -19,7 +19,7 @@ export default class Header extends Component {
                     </li>
                     <li className="navtext" id="nav3">
                         <NavLink className="navlink" to="/meals">
-                            Meals
+                            Meals diary
                         </NavLink>
                     </li>
                 </ul>

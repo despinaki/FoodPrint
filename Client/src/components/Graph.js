@@ -3,6 +3,13 @@ import { connect } from 'react-redux';
 import CanvasJSReact from '../assets/canvasjs.react';
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import './styles/Graph.css'
+
+CanvasJS.addColorSet("customColorSet1",
+	[//colorSet Array
+	"#918560",
+	"#559bd1",
+]);
 
 class Graph extends Component {
     constructor() {
@@ -33,8 +40,11 @@ class Graph extends Component {
         // const dates=[];
         // const emissions = [];
         // const water = [];
+        const emissionsArr=[];
+        const waterArr=[];
         const emissionsDataPoints = [];
         const waterWasteDataPoints = [];
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
         if (this.state.sumData.length > 0) {
             this.state.sumData.map((obj, index) => {
                 emissionsDataPoints[index]=({x: new Date(obj["date"].slice(0,10)), y: parseFloat(obj["emissions_sum"])})
@@ -42,27 +52,30 @@ class Graph extends Component {
                 // dates[index] = obj["date"].slice(0,10);
                 // emissions[index]= obj["emissions_sum"].toFixed(2);
                 // water[index] = obj["water_sum"].toFixed(2);
+                emissionsArr.push(obj["emissions_sum"])
+                waterArr.push(obj["water_sum"])
             })
         } 
         const options = {
-			theme: "light2",
+            theme: "light2",
+            colorSet: "customColorSet1",
 			animationEnabled: true,
 			title:{
 				text: "Your foodprint over time"
 			},
 			axisY: {
-				title: "CO2 emissions (CO2 kg-equivalents)",
-				titleFontColor: "#6D78AD",
-				lineColor: "#6D78AD",
-				labelFontColor: "#6D78AD",
-				tickColor: "#6D78AD"
+				title: "CO2 emissions (kg CO2-equivalents)",
+				titleFontColor: "#918560",
+				lineColor: "#918560",
+				labelFontColor: "#918560",
+				tickColor: "#918560"
 			},
 			axisY2: {
 				title: "Water waste (L)",
-				titleFontColor: "#51CDA0",
-				lineColor: "#51CDA0",
-				labelFontColor: "#51CDA0",
-				tickColor: "#51CDA0"
+				titleFontColor: "#559bd1",
+				lineColor: "#559bd1",
+				labelFontColor: "#559bd1",
+				tickColor: "#559bd1"
 			},
 			toolTip: {
 				shared: true
@@ -90,9 +103,14 @@ class Graph extends Component {
 			}]
 		}
         return (
-            <div>
-                {console.log(emissionsDataPoints)}
+            <div id="graph-div">
+                {/* {console.log(emissionsDataPoints)} */}
                <CanvasJSChart options = {options} onRef={ref => this.chart = ref}/>
+               <p>Your food choices contribute a <strong>daily average of {(emissionsArr.reduce(reducer,0)/emissionsArr.length).toFixed(2)} kg CO2-equivalents</strong> in emissions
+                and <strong>{(waterArr.reduce(reducer,0)/waterArr.length).toFixed(2)} L</strong> in fresh water withdrawals.</p>
+               <p>Within a year, this is the same as driving a regular petrol car for {((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 4.13 * 365).toFixed(2)} km ({((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 2.57 * 365).toFixed(2)} miles),
+               or heating an average UK home for {(emissionsArr.reduce(reducer,0)/emissionsArr.length * 0.15 * 365).toFixed(2)} days.
+               Also the same as taking {365 * ((waterArr.reduce(reducer,0)/waterArr.length)/88).toFixed(2)} eight-minute showers.</p>
             </div>
         )
     }

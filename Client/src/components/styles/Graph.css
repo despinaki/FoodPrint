@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
+
+#graph-div {
+    position: relative;
+    top: 35px;
+    left: calc(50% - 375px);
+    width: 750px;
+}
+
+#graph-div p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
