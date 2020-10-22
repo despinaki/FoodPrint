@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
+
+#welcome-wrap {
+    background-color: white;
+    text-align: center;
+    width: 900px;
+    height: 450px;
+    position: relative;
+    left: calc(50% - 450px);
+    top:50px;
+}
+#welcome-wrap img {
+    width: 450px;
+    height: auto;
+    position: absolute;
+    left: 0;
+}
+
+#welcome-text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 440px;
+}
+
+#faded-text {
+    font-size: 18px;
+    color:#404040;
+}
+
+.welcome-button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    color: white;
+    position: relative;
+    width: 80px;
+    height: 40px;
+    top: 30px;
+    background-color: #6F7D57;
+    border-width: 0;
+    /* border-radius: 10%; */
+}
+
+#login-button {
+    left: 25px;
+}
+
+#register-button {
+    right: 25px;
+}

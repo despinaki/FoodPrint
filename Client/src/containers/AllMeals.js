@@ -23,7 +23,7 @@ class AllMeals extends Component {
                 {allDates.map((date, idx) => {
                     return (
                         <div key={idx}>
-                            <h3>Date: {date}</h3>
+                            <h3>Date: {date.slice(0,10)}</h3>
                             {this.state.allMeals.map((food, index) => {
                                 return (
                                     <div key={index}>
@@ -41,7 +41,6 @@ class AllMeals extends Component {
                     )
                 })}
                 {/* serving_weight/1000 (kg)* quantity * total_emissions (CO2 eq per kg) */}
-                {console.log(allDates)}
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {logUser, saveToken} from '../actions/Actions';
 import { connect } from 'react-redux';
+import './styles/Login.css'
 
 export class Login extends Component {
     state = {

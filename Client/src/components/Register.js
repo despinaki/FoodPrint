@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles/Register.css'
 
 export class Register extends Component {
   state = {
