@@ -1,1 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
 
+#register-wrap {
+    background-color: white;
+    text-align: center;
+    width: 900px;
+    height: 450px;
+    position: relative;
+    left: calc(50% - 450px);
+    top:50px;
+}
+#register-wrap img {
+    width: 450px;
+    height: auto;
+    position: absolute;
+    left: 0;
+}
+
+.textbox {
+    width: 175px;
+    height: 25px;
+}
+
+#user, #mail, #pass1, #pass2, #register, .textbox {
+    font-family: 'Open Sans', sans-serif;
+    position: absolute;
+    left: 465px;
+}
+
+#user {
+    top: 75px;
+}
+#usertext {
+    top: 100px;
+}
+#mail {
+    top: 130px;
+}
+#mailtext {
+    top: 155px;
+}
+#pass1 {
+    top: 185px;
+}
+#pass1text {
+    top: 210px;
+}
+#pass2 {
+    top: 240px;
+}
+#pass2text {
+    top: 265px;
+}
+#register {
+    top: 310px;
+    left: calc(465px + 175px/4);
+    font-size: 18px;
+    color: white;
+    width: 80px;
+    height: 40px;
+    background-color: #6F7D57;
+    border-width: 0;
+}
+
+#register:hover {
+    background-color: rgba(111, 125, 87, 0.6);
+    cursor: pointer;
+}

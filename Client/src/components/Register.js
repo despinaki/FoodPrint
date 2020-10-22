@@ -41,18 +41,18 @@ export class Register extends Component {
   
     render() {
         return (
-          <div>
-            <h1>Register</h1>
+          <div id="register-wrap">
+            <img src="../assets/foodprint.png" alt="logo"></img>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="username">Username</label><br/>
-                <input className="textbox" placeholder="username" type="text" name="username" onChange={this.handleInput} required></input><br/>
-              <label htmlFor="email">Email</label><br/>
-                <input className="textbox" placeholder="example@example.com" type="text" name="email" onChange={this.handleInput} required></input><br/>
-              <label htmlFor="password">Password</label><br/>
-                <input className="textbox" placeholder="password" type="password" name="password" onChange={this.handleInput} required></input><br/>
-              <label htmlFor="password2">Confirm password</label><br/>
-                <input className="textbox" placeholder="passwords must match" type="password" name="password2" onChange={this.handleInput} required></input><br/>
-              <input type="submit" value="Register"></input>
+              <label htmlFor="username" id="user">Username</label><br/>
+                <input className="textbox" id="usertext" placeholder="username" type="text" name="username" onChange={this.handleInput} required></input><br/>
+              <label htmlFor="email" id="mail">Email</label><br/>
+                <input className="textbox" id="mailtext" placeholder="example@example.com" type="text" name="email" onChange={this.handleInput} required></input><br/>
+              <label htmlFor="password" id="pass1">Password</label><br/>
+                <input className="textbox" id="pass1text" placeholder="password" type="password" name="password" onChange={this.handleInput} required></input><br/>
+              <label htmlFor="password2" id="pass2">Confirm password</label><br/>
+                <input className="textbox" id="pass2text" placeholder="passwords must match" type="password" name="password2" onChange={this.handleInput} required></input><br/>
+              <input type="submit" id="register" value="Register"></input>
             </form>
           </div>
         )
