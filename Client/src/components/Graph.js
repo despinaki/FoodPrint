@@ -61,7 +61,8 @@ class Graph extends Component {
             colorSet: "customColorSet1",
 			animationEnabled: true,
 			title:{
-				text: "Your foodprint over time"
+                text: "Your foodprint over time",
+                fontSize: 25
 			},
 			axisY: {
 				title: "CO2 emissions (kg CO2-equivalents)",

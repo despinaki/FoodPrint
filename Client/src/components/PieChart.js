@@ -3,6 +3,18 @@ import CanvasJSReact from '../assets/canvasjs.react';
 const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+CanvasJS.addColorSet("customColorSet2",
+	[//colorSet Array
+	"#B8CBC6",
+    "#CD9AFF",
+    "#AAA96E",
+    "#F2C478",
+    "#D1634B",
+    "#6E8DAA",
+    "#85548F",
+    "#8F5463"
+]);
+
 export default class PieChart extends Component {
 
     render() {
@@ -26,12 +38,15 @@ export default class PieChart extends Component {
         }
 
         const options = {
-			theme: "dark2",
+            theme: "light2",
+            colorSet: "customColorSet2",
 			animationEnabled: true,
 			exportFileName: "Processes contribution breakdown",
 			exportEnabled: false,
 			title:{
-				text: `Production processes contributing to the environmental impact of ${this.props.foodname}`
+                text: `Production processes contributing to the environmental impact of ${this.props.foodname}`,
+                fontSize: 20,
+                horizontalAlign: "center"
 			},
 			data: [{
 				type: "pie",

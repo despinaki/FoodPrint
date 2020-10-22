@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif&family=Open+Sans&display=swap");
+#calc-container {
+    position: relative;
+    top: 70px;
+    left: calc(50% - 450px);
+    width: 900px;
+    text-align: center;
+    z-index: 5;
+}
+
+#calc-container p, #calc-container label, #calc-container input, #calc-container select {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+#calc-container h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+}
+
+#calc-submit, #calc-another, #add-food{
+    color: white;
+    width: 80px;
+    height: 40px;
+    background-color: #6F7D57;
+    border-width: 0;
+    position: relative;
+    top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+#calc-submit:hover, #add-food:hover, #calc-another:hover {
+    background-color:  black;
+    cursor: pointer;
+}
+
+#expansion:hover {
+    cursor: pointer;
+    color: #6F7D57;
+}
+
+#calc-another, #add-food {
+    width: 165px;
+} 
+

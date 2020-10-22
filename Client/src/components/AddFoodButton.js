@@ -31,7 +31,7 @@ class AddFoodButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.postToMeal}>Add to my meal</button>
+                <button id="add-food" onClick={this.postToMeal}>Add to my meal</button>
             </div>
         )
     }

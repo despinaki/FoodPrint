@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PieChart from '../components/PieChart';
 import Header from '../components/Header';
 import AddFoodButton from '../components/AddFoodButton';
+import './styles/Calculator.css'
 
 class Calculator extends Component {
     state = {
@@ -77,8 +78,8 @@ class Calculator extends Component {
             const yearlyEqWater = (this.state.foodinfo.serving_weight/1000) * (this.state.foodinfo.total_water) * 52 * 2.5;
 
             servingInfo = <p>{`One serving corresponds to ${this.state.foodinfo.one_serving} (${this.state.foodinfo.serving_weight} g).`}</p>;
-            resultsParagraph = <p>{`Total CO2 emissions: ${result.toFixed(2)} kg CO2-equivalents.`}<br/>
-            {`Total fresh water withdrawals: ${resultWater.toFixed(2)} L water.`}</p>
+            resultsParagraph = <p><strong>Total CO2 emissions:</strong> {result.toFixed(2)} kg CO2-equivalents.<br/>
+            <strong>Total fresh water withdrawals:</strong> {resultWater.toFixed(2)} L water.</p>
             resultsTranslation = <p>{`Consuming a serving of ${this.state.foodChosen.toLowerCase()} 2-3 times a week contributes to a yearly
              total of ${yearlyEq.toFixed(2)} kg CO2-equivalents in emissions and ${yearlyEqWater.toFixed(2)} L in fresh water withdrawals.`}<br/>
              {`This is the same as driving a regular petrol car for ${(yearlyEq * 4.13).toFixed(2)} km (${(yearlyEq * 2.57).toFixed(2)} miles),`}<br/>
@@ -94,9 +95,9 @@ class Calculator extends Component {
         return (
             <div>
                 <Header />
-                <h1>User: {this.state.userid}</h1>
+                <div id="calc-container">
                 <h2>See how the production of the foods you eat impacts the environment</h2>
-                <form id ="calcForm" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="category">Category</label><br/>
                         <input type="search" list="all-categories" name="category" onChange={this.handleInput} required></input><br/>
                         <datalist id="all-categories">
@@ -114,25 +115,27 @@ class Calculator extends Component {
                             <option value="1">One serving</option>
                             <option value="2">Two servings</option>
                         </select><br/>
-                    <input type="submit" value="Submit"></input>
+                    <input type="submit" value="Submit" id="calc-submit"></input>
                 </form>
 
                 {servingInfo}
                 {resultsParagraph}
                 {resultsTranslation}
-                {this.state.showResults && <p onClick={this.alterShow}>{this.state.showBreakdown ? 'Show less' : 'Show more'}</p>}
+                {this.state.showResults && <p id="expansion" onClick={this.alterShow}>{this.state.showBreakdown ? 'Show less' : 'Show more'}</p>}
                 { 
                     this.state.showBreakdown && this.state.showResults &&
-                       <PieChart foodinfo={this.state.foodinfo} foodname={this.state.foodChosen} />
-                }
-                {
-                    this.state.showResults &&
-                    <button onClick={this.clearForm}><a href="#calcForm">Calculate another</a></button>
+                       <PieChart id="piechart" foodinfo={this.state.foodinfo} foodname={this.state.foodChosen} />
                 }
                 {
                     Object.keys(this.state.foodinfo).length > 0 && this.state.showResults &&
                     <AddFoodButton foodinfo={this.state.foodinfo} quantity={this.state.quantityChosen}/>
                 }
+                <br/>
+                {
+                    this.state.showResults &&
+                    <button id="calc-another" onClick={this.clearForm}>Calculate another</button>
+                }
+                </div>
             </div>
         )
     }
