@@ -1,12 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { endSession } from '../actions/Actions';
+import './styles/Logout.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 function Logout(props) {
     const signOut = () => {props.logOut()}
     return (
-        <div>
-          <button onClick={signOut}>Log out</button>  
+        <div id="section-logout">
+          <button id="button-logout" onClick={signOut}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+          </button>  
         </div>
     )
 }

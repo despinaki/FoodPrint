@@ -1,0 +1,12 @@
+#section-logout {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+}
+
+#button-logout {
+    font-size: 30px;
+    background-color: black;
+    border-width: 0;
+    color: white;
+}
