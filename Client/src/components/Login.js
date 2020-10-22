@@ -53,9 +53,9 @@ export class Login extends Component {
               <form onSubmit={this.handleSubmit}>
 
                 <label htmlFor="username" id="name">Username</label><br/>
-                  <input  className="textbox" id="nametext" type="text" name="username" onChange={this.handleInput}></input><br/>
+                  <input  className="textbox1" id="nametext" type="text" name="username" onChange={this.handleInput}></input><br/>
                 <label htmlFor="username" id="pass">Password</label><br/>
-                  <input className="textbox" id="passtext" type="password" name="password" onChange={this.handleInput}></input><br/>
+                  <input className="textbox1" id="passtext" type="password" name="password" onChange={this.handleInput}></input><br/>
 
                   <input type="submit" value="Log in" id="login"></input>
                 </form>

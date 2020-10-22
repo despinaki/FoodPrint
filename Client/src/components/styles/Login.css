@@ -16,12 +16,12 @@
     left: 0;
 }
 
-.textbox {
+.textbox1 {
     width: 150px;
     height: 25px;
 }
 
-#name, #pass, #login, .textbox {
+#name, #pass, #login, .textbox1 {
     font-family: 'Open Sans', sans-serif;
     position: absolute;
     left: 465px;
