@@ -10,7 +10,7 @@
   "scripts": {
     "heroku-prebuild": "npm install --dev",
     "start": "node index.js",
-    "heroku-postbuild": "cd Client && npm install && npm run build"
+    "heroku-postbuild": "cd Client && npm install && npm run build:prod"
   },
   "author": "",
   "license": "ISC",

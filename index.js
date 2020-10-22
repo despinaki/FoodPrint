@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json())
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "Client/build")))
+    app.use(express.static(path.join(__dirname, "Client/public")))
 }
 
 //import routes
@@ -25,7 +25,7 @@ app.use('/api', apiRoute)
 app.get('/', (req, res) => res.send('Hello world!'));
 //catch unknown routes
 app.get("*", (req,res) => {
-    res.sendFile(path.join(__dirname, "Client/build/index.html"))
+    res.sendFile(path.join(__dirname, "Client/public/index.html"))
 })
 
 app.listen(PORT, () => console.log(`Express now departing from http://localhost:${PORT}`))
