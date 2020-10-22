@@ -18,9 +18,9 @@ class Calculator extends Component {
         showBreakdown: false
     }
     componentDidMount() {
-        const URL = "http://localhost:5000"
+        // const URL = "http://localhost:5000"
         const findCategories = () => {
-            fetch(`${URL}/api/foods/categories`)
+            fetch(`/api/foods/categories`)
             .then(resp => resp.json())
             .then(resp => this.setState({foodCategories: resp}))
             .catch(err=>console.log(err))

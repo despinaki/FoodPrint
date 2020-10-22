@@ -19,8 +19,8 @@ class Graph extends Component {
     }
     
     componentDidMount() {
-        const URL = "http://localhost:5000"
-        fetch(`${URL}/api/${this.props.userid}/allemissions`)
+        // const URL = "http://localhost:5000"
+        fetch(`/api/${this.props.userid}/allemissions`)
         .then(resp => resp.json())
         .then(resp => this.setState({sumData: resp.sort((a, b) => a.date - b.date)}))
         .catch(err=>console.log(err))   

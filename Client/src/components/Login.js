@@ -28,9 +28,9 @@ export class Login extends Component {
             body: JSON.stringify(userData)
         }
 
-        const URL = 'http://localhost:5000'
+        // const URL = 'http://localhost:5000'
 
-        fetch(`${URL}/auth/login`, options)
+        fetch(`/auth/login`, options)
         .then(resp => resp.json())
         .then(resp => {
             this.props.setUserId(resp.user_id)

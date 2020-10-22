@@ -9,8 +9,8 @@ class AllMeals extends Component {
     }
 
     componentDidMount() {
-        const URL = "http://localhost:5000"
-        fetch(`${URL}/api/${this.props.userid}/meals/all`)
+        // const URL = "http://localhost:5000"
+        fetch(`/api/${this.props.userid}/meals/all`)
         .then(resp => resp.json())
         .then(resp => this.setState({allMeals: resp}))
         .catch(err=>console.log(err))   

@@ -28,9 +28,9 @@ export class Register extends Component {
             body: JSON.stringify(userData)
           }
           
-          const URL = 'http://localhost:5000'
+          // const URL = 'http://localhost:5000'
       
-          fetch(`${URL}/auth/register`, options)
+          fetch(`/auth/register`, options)
           .then(resp => resp.json())
           .then(resp => {
               if(resp.status === 201) {this.props.history.push('/login')}

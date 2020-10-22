@@ -20,9 +20,13 @@ class AddFoodButton extends Component {
             body: JSON.stringify(Data)
         }
 
-        const URL = 'http://localhost:5000'
+        // const URL = 'http://localhost:5000'
+        //proxy is only used in development so it will be ignored in production
+        //so if there is no http://localhost:5000 then by default it is going to use heroku domain
+        //remember this heroku app is just our server serving the build static content and also holding the restful api
 
-        fetch(`${URL}/api/meals/today`, options)
+
+        fetch(`/api/meals/today`, options)
         .then(resp => resp.json())
         .then(alert("Added to your meal"))
         .catch(err => console.log(err))
