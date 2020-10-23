@@ -22,7 +22,7 @@ class Graph extends Component {
         const URL = "http://localhost:5000"
         fetch(`${URL}/api/${this.props.userid}/allemissions`)
         .then(resp => resp.json())
-        .then(resp => this.setState({sumData: resp.sort((a, b) => a.date - b.date)}))
+        .then(resp => this.setState({sumData: resp}))
         .catch(err=>console.log(err))   
     }
 
@@ -37,16 +37,15 @@ class Graph extends Component {
 	}
 
     render() {
-        // const dates=[];
-        // const emissions = [];
-        // const water = [];
+        const sortedSumData = this.state.sumData.sort((a, b) => new Date(a.date) - new Date(b.date))
         const emissionsArr=[];
         const waterArr=[];
         const emissionsDataPoints = [];
-        const waterWasteDataPoints = [];
+		const waterWasteDataPoints = [];
+
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        if (this.state.sumData.length > 0) {
-            this.state.sumData.map((obj, index) => {
+        if (sortedSumData.length > 0) {
+            sortedSumData.map((obj, index) => {
                 emissionsDataPoints[index]=({x: new Date(obj["date"].slice(0,10)), y: parseFloat(obj["emissions_sum"])})
                 waterWasteDataPoints[index]=({x: new Date(obj["date"].slice(0,10)), y: parseFloat(obj["water_sum"])})
                 // dates[index] = obj["date"].slice(0,10);
@@ -105,13 +104,15 @@ class Graph extends Component {
 		}
         return (
             <div id="graph-div">
+				{console.log(sortedSumData)}
+				{console.log(emissionsDataPoints)}
                 {/* {console.log(emissionsDataPoints)} */}
                <CanvasJSChart options = {options} onRef={ref => this.chart = ref}/>
                <p>Your food choices contribute a <strong>daily average of {(emissionsArr.reduce(reducer,0)/emissionsArr.length).toFixed(2)} kg CO2-equivalents</strong> in emissions
                 and <strong>{(waterArr.reduce(reducer,0)/waterArr.length).toFixed(2)} L</strong> in fresh water withdrawals.</p>
                <p>Within a year, this is the same as driving a regular petrol car for {((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 4.13 * 365).toFixed(2)} km ({((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 2.57 * 365).toFixed(2)} miles),
                or heating an average UK home for {(emissionsArr.reduce(reducer,0)/emissionsArr.length * 0.15 * 365).toFixed(2)} days.
-               Also the same as taking {365 * ((waterArr.reduce(reducer,0)/waterArr.length)/88).toFixed(2)} eight-minute showers.</p>
+               Also the same as taking {(365*(((waterArr.reduce(reducer,0)/waterArr.length))/88)).toFixed(2)} eight-minute showers.</p>
             </div>
         )
     }

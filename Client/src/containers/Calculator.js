@@ -97,7 +97,7 @@ class Calculator extends Component {
                 <Header />
                 <div id="calc-container">
                 <h2>See how the production of the foods you eat impacts the environment</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form id="calcForm" onSubmit={this.handleSubmit}>
                     <label htmlFor="category">Category</label><br/>
                         <input type="search" list="all-categories" name="category" onChange={this.handleInput} required></input><br/>
                         <datalist id="all-categories">
