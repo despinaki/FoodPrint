@@ -9,7 +9,7 @@ function Dashboard(props) {
         return (
             <div>
                 <Header />
-                <h3>User: {props.userid}</h3>
+                {/* <h3>User: {props.userid}</h3> */}
                 <Graph />
                 <Logout/>
             </div>
