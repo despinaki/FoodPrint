@@ -108,14 +108,14 @@ class Graph extends Component {
 				{console.log(emissionsDataPoints)}
                 {/* {console.log(emissionsDataPoints)} */}
 				<div>
-					{emissionsArr.length > 0 && waterArr > 0 ? <CanvasJSChart options = {options} onRef={ref => this.chart = ref}/> : <p>Your dashboard is empty. Start using the calculator and adding foods to your daily meal to keep track of your foodprint!</p>}
+					{sortedSumData.length > 0 ? <CanvasJSChart options = {options} onRef={ref => this.chart = ref}/> : <p>Your dashboard is empty. Start using the calculator and adding foods to your daily meal to keep track of your foodprint!</p>}
 				</div>
 			   <div>
-				   {emissionsArr.length > 0 && waterArr > 0 ? <p>Your food choices contribute a <strong>daily average of {(emissionsArr.reduce(reducer,0)/emissionsArr.length).toFixed(2)} kg CO2-equivalents</strong> in emissions
+				   {sortedSumData.length > 0 ? <p>Your food choices contribute a <strong>daily average of {(emissionsArr.reduce(reducer,0)/emissionsArr.length).toFixed(2)} kg CO2-equivalents</strong> in emissions
                 and <strong>{(waterArr.reduce(reducer,0)/waterArr.length).toFixed(2)} L</strong> in fresh water withdrawals.</p> : null}
 			   </div>
 			   <div>
-			   		{emissionsArr.length > 0 && waterArr > 0 ? <p>Within a year, this is the same as driving a regular petrol car for {((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 4.13 * 365).toFixed(2)} km ({((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 2.57 * 365).toFixed(2)} miles),
+			   		{sortedSumData.length > 0 ? <p>Within a year, this is the same as driving a regular petrol car for {((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 4.13 * 365).toFixed(2)} km ({((emissionsArr.reduce(reducer,0)/emissionsArr.length) * 2.57 * 365).toFixed(2)} miles),
                or heating an average UK home for {(emissionsArr.reduce(reducer,0)/emissionsArr.length * 0.15 * 365).toFixed(2)} days.
                Also the same as taking {(365*(((waterArr.reduce(reducer,0)/waterArr.length))/88)).toFixed(2)} eight-minute showers.</p> : null}
 			   </div>
