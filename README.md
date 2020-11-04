@@ -1,25 +1,7 @@
 # FoodPrint
 
-## Mon-Tue 19/10
+## About
 
--add food to meal of the day
+FoodPrint is an application that helps users keep track of the environmental impact of their food choices.
 
--save meals
-
--graph
-
-## MVP
-
-User auth
-
-Carbon footprint calculator
-
-Results translated in car miles & showers
-  
-## Should have
-
-Daily meal entries
-
-Total daily carbon footprint
-
-Stats over time
+![FoodPrint Logo](../Client/src/assets/foodprint.png?raw=true "FoodPrint Logo")
